@@ -13,6 +13,7 @@
   const t = (k) => TEXT[lang][k] ?? k;
 
   let filter = "all";
+  const galleryAt = {}; // product id -> which photo is showing
 
   /* ---------- placeholder art (shown until a photo is added) ---------- */
   const ART = {
@@ -60,9 +61,21 @@
     const list = PRODUCTS.filter((p) => filter === "all" || p.category === filter);
     $("#grid").innerHTML = list.map((p) => {
       const wait = p.status === "waitlist";
-      const media = p.image
-        ? `<img src="${esc(p.image)}" alt="${esc(p.name[lang])}" loading="lazy">`
-        : art(p.art);
+      const slides = p.images && p.images.length ? p.images : (p.image ? [p.image] : []);
+      const cur = Math.min(galleryAt[p.id] || 0, Math.max(slides.length - 1, 0));
+      let media = art(p.art);
+      if (slides.length) {
+        media = slides.map((s, i) =>
+          `<div class="slide"${i === cur ? "" : " hidden"}>` +
+          [].concat(s).map((src) => `<img src="${esc(src)}" alt="${esc(p.name[lang])}" loading="lazy">`).join("") +
+          `</div>`).join("");
+        if (slides.length > 1) {
+          media +=
+            `<button type="button" class="gal-btn prev" data-gal="${esc(p.id)}" data-step="-1" aria-label="${esc(t("gal.prev"))}">‹</button>` +
+            `<button type="button" class="gal-btn next" data-gal="${esc(p.id)}" data-step="1" aria-label="${esc(t("gal.next"))}">›</button>` +
+            `<div class="gal-dots" aria-hidden="true">${slides.map((_, i) => `<i${i === cur ? ' class="on"' : ""}></i>`).join("")}</div>`;
+        }
+      }
       return `<article class="card">
         <div class="card-media">${media}<span class="badge ${wait ? "waitlist" : ""}">${esc(t(wait ? "badge.waitlist" : "badge.made"))}</span></div>
         <div class="card-body">
@@ -206,6 +219,17 @@
     }
     const chip = e.target.closest("[data-cat]");
     if (chip) { filter = chip.dataset.cat; renderFilters(); renderGrid(); return; }
+    const gal = e.target.closest("[data-gal]");
+    if (gal) {
+      const box = gal.closest(".card-media");
+      const slides = $$(".slide", box);
+      const n = slides.length;
+      const i = ((galleryAt[gal.dataset.gal] || 0) + Number(gal.dataset.step) + n) % n;
+      galleryAt[gal.dataset.gal] = i;
+      slides.forEach((s, k) => { s.hidden = k !== i; });
+      $$(".gal-dots i", box).forEach((d, k) => d.classList.toggle("on", k === i));
+      return;
+    }
     const pickBtn = e.target.closest("[data-pick]");
     if (pickBtn) { pick(pickBtn.dataset.pick); return; }
     if (e.target.closest("[data-custom]")) { setType("custom"); $("#item").value = ""; }

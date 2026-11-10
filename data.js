@@ -24,6 +24,9 @@ const SITE = {
    category: "models" | "objects" | "service"
    image:    put a photo in the images/ folder and write e.g.
              "images/trex.jpg". Leave "" to show the drawn placeholder.
+   images:   optional gallery (arrows on the card). Each entry is one slide:
+             either one photo "images/a.jpg", or a pair shown side by side
+             ["images/small.jpg", "images/large.jpg"].
    price:    text shown on the card, e.g. { ko: "₩45,000", en: "₩45,000" }
    --------------------------------------------------------------------- */
 const PRODUCTS = [
@@ -46,10 +49,15 @@ const PRODUCTS = [
     status: "made",
     art: "cylinder",
     image: "",
+    images: [
+      "images/offlow-shelf.jpg",
+      ["images/offlow-product.jpg", "images/offlow-display.jpg"],
+      ["images/beenuvo-contrast.jpg", "images/beenuvo-display.jpg"],
+    ],
     name: { ko: "브랜드 디스플레이 오브제", en: "Brand Display Objet" },
     desc: {
-      ko: "로고와 문구를 넣은 대형 디스플레이 오브제. 팝업·매장 연출용, 브랜드 컬러 맞춤.",
-      en: "Large display piece with your logo and copy, colour-matched to your brand. For pop-ups and retail.",
+      ko: "실제 제품을 그대로 키운 대형 디스플레이 오브제. 로고와 문구까지 재현하고 브랜드 컬러에 맞춥니다. 팝업·매장 연출용.",
+      en: "Your product scaled up into a large display piece, with logo and copy reproduced and colour matched to your brand. For pop-ups and retail.",
     },
     price: { ko: "견적 문의", en: "Quote on request" },
   },
@@ -102,6 +110,8 @@ const TEXT = {
     "filter.models": "모형",
     "filter.objects": "오브제",
     "filter.service": "서비스",
+    "gal.prev": "이전 사진",
+    "gal.next": "다음 사진",
     "badge.waitlist": "웨이팅리스트",
     "badge.made": "주문 제작",
     "btn.waitlist": "웨이팅리스트 등록",
@@ -170,6 +180,8 @@ const TEXT = {
     "filter.models": "Models",
     "filter.objects": "Objects",
     "filter.service": "Services",
+    "gal.prev": "Previous photo",
+    "gal.next": "Next photo",
     "badge.waitlist": "Waitlist",
     "badge.made": "Made to order",
     "btn.waitlist": "Join waitlist",
