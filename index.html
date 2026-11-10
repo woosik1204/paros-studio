@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paros Studio — 3D Printing</title>
+<meta name="description" content="Paros Studio — engineer-run 3D print studio in Seoul. Shop finished prints or request a custom piece. 서울의 3D 프린팅 스튜디오.">
+<meta property="og:title" content="Paros Studio — 3D Printing">
+<meta property="og:description" content="Design · Fabrication · Objects. Engineer-run 3D print studio in Seoul.">
+<meta property="og:type" content="website">
+<link rel="icon" href="images/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="top">
+  <a class="brand" href="#home" aria-label="Paros Studio">
+    <img src="images/logo.svg" alt="" width="34" height="34">
+    <span>Paros Studio</span>
+  </a>
+  <nav class="nav" aria-label="Main">
+    <a href="#shop" data-i18n="nav.shop"></a>
+    <a href="#custom" data-i18n="nav.custom"></a>
+    <a href="#process" data-i18n="nav.process"></a>
+    <a href="#request" class="nav-cta" data-i18n="nav.request"></a>
+  </nav>
+  <div class="lang" role="group" aria-label="Language">
+    <button type="button" data-lang="ko">KR</button>
+    <button type="button" data-lang="en">EN</button>
+  </div>
+</header>
+
+<main id="home">
+
+  <section class="hero">
+    <div class="hero-text">
+      <p class="eyebrow" data-i18n="hero.eyebrow"></p>
+      <h1 data-i18n="hero.title"></h1>
+      <p class="lead" data-i18n="hero.lead"></p>
+      <div class="actions">
+        <a class="btn primary" href="#shop" data-i18n="hero.cta1"></a>
+        <a class="btn" href="#request" data-custom data-i18n="hero.cta2"></a>
+      </div>
+      <p class="note" data-i18n="hero.note"></p>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <div class="nozzle"></div>
+      <div class="stack"></div>
+    </div>
+  </section>
+
+  <section id="shop" class="section">
+    <div class="section-head">
+      <h2 data-i18n="shop.title"></h2>
+      <p data-i18n="shop.lead"></p>
+    </div>
+    <div class="filters" id="filters"></div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section id="custom" class="section band">
+    <div class="section-head">
+      <h2 data-i18n="custom.title"></h2>
+      <p data-i18n="custom.lead"></p>
+    </div>
+    <div class="features">
+      <div><h3 data-i18n="custom.f1.t"></h3><p data-i18n="custom.f1.d"></p></div>
+      <div><h3 data-i18n="custom.f2.t"></h3><p data-i18n="custom.f2.d"></p></div>
+      <div><h3 data-i18n="custom.f3.t"></h3><p data-i18n="custom.f3.d"></p></div>
+    </div>
+    <a class="btn primary" href="#request" data-custom data-i18n="hero.cta2"></a>
+  </section>
+
+  <section id="process" class="section">
+    <div class="section-head"><h2 data-i18n="process.title"></h2></div>
+    <ol class="steps">
+      <li><span>01</span><h3 data-i18n="process.s1.t"></h3><p data-i18n="process.s1.d"></p></li>
+      <li><span>02</span><h3 data-i18n="process.s2.t"></h3><p data-i18n="process.s2.d"></p></li>
+      <li><span>03</span><h3 data-i18n="process.s3.t"></h3><p data-i18n="process.s3.d"></p></li>
+      <li><span>04</span><h3 data-i18n="process.s4.t"></h3><p data-i18n="process.s4.d"></p></li>
+    </ol>
+  </section>
+
+  <section class="section ig">
+    <div>
+      <h2 data-i18n="ig.title"></h2>
+      <p data-i18n="ig.lead"></p>
+    </div>
+    <a class="btn" id="igLink" target="_blank" rel="noopener"><span data-i18n="ig.cta"></span> <b id="igHandle"></b></a>
+  </section>
+
+  <section id="request" class="section">
+    <div class="section-head">
+      <h2 data-i18n="req.title"></h2>
+      <p data-i18n="req.lead"></p>
+    </div>
+
+    <form id="form" class="form" novalidate>
+      <fieldset class="seg">
+        <legend data-i18n="req.type"></legend>
+        <label><input type="radio" name="type" value="waitlist" checked><span data-i18n="req.type.waitlist"></span></label>
+        <label><input type="radio" name="type" value="custom"><span data-i18n="req.type.custom"></span></label>
+      </fieldset>
+
+      <label class="field" id="itemField">
+        <span data-i18n="req.item"></span>
+        <select name="item" id="item"></select>
+      </label>
+      <label class="field" id="qtyField">
+        <span data-i18n="req.qty"></span>
+        <input type="number" name="quantity" min="1" max="999" value="1" inputmode="numeric">
+      </label>
+      <label class="field">
+        <span data-i18n="req.name"></span>
+        <input type="text" name="name" required autocomplete="name">
+      </label>
+      <label class="field">
+        <span data-i18n="req.contact"></span>
+        <input type="text" name="contact" required autocomplete="email">
+      </label>
+      <label class="field wide">
+        <span data-i18n="req.details"></span>
+        <textarea name="details" rows="5" data-i18n-ph="req.details.ph"></textarea>
+      </label>
+      <label class="field wide">
+        <span data-i18n="req.link"></span>
+        <input type="url" name="link" placeholder="https://">
+      </label>
+      <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+      <div class="wide form-foot">
+        <button class="btn primary" type="submit" id="submit" data-i18n="req.submit"></button>
+        <p id="status" class="status" role="status"></p>
+      </div>
+    </form>
+
+    <div id="dm" class="dm" hidden>
+      <h3 data-i18n="req.dm.title"></h3>
+      <p data-i18n="req.dm.lead"></p>
+      <pre id="dmText"></pre>
+      <button class="btn primary" type="button" id="dmCopy" data-i18n="req.dm.copy"></button>
+      <p id="dmStatus" class="status" role="status"></p>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="brand"><img src="images/logo.svg" alt="" width="28" height="28"><span>Paros Studio</span></div>
+  <p><span data-i18n="foot.loc"></span> · <a id="igFoot" target="_blank" rel="noopener"></a></p>
+  <p class="muted">© <span id="year"></span> Paros Studio. <span data-i18n="foot.rights"></span></p>
+</footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

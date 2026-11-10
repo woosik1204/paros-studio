@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <pattern id="l" width="4" height="3.2" patternUnits="userSpaceOnUse">
+      <rect width="4" height="2" fill="#fff"/>
+    </pattern>
+    <clipPath id="p">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M18 16h17a12.500 12.500 0 0 1 0 25h-6v11H18zM29 25v7.500h5a3.750 3.750 0 0 0 0-7.500z"/>
+    </clipPath>
+  </defs>
+  <circle cx="32" cy="32" r="32" fill="#14161b"/>
+  <rect x="14" y="16" width="40" height="36" fill="url(#l)" clip-path="url(#p)"/>
+  <rect x="18" y="11.500" width="26" height="1.600" fill="#3b6bff"/>
+  <path d="M40 9h6v4l-3 3-3-3z" fill="#3b6bff"/>
+</svg>
