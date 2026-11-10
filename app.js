@@ -34,7 +34,7 @@
       '<path d="M18 31l32 17 32-17M50 48v38" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>',
   };
   const art = (name) =>
-    `<svg viewBox="0 0 100 100" aria-hidden="true" style="color:#c9ced8">
+    `<svg viewBox="0 0 100 100" aria-hidden="true">
        <defs><pattern id="ln" width="6" height="5" patternUnits="userSpaceOnUse"><rect width="6" height="1.6" fill="currentColor" opacity=".55"/></pattern></defs>
        ${ART[name] || ART.cube}
      </svg>`;
@@ -121,6 +121,20 @@
     ].filter(Boolean).join("\n");
   }
 
+  function showSendOptions(text, name) {
+    $("#dmText").textContent = text;
+    $("#dmEmail").href = "mailto:" + SITE.email +
+      "?subject=" + encodeURIComponent(t("req.mail.subject") + " — " + name.trim()) +
+      "&body=" + encodeURIComponent(text);
+    $("#dmStatus").textContent = "";
+    $("#dm").hidden = false;
+  }
+
+  $("#dmEmail").addEventListener("click", () => {
+    $("#dmStatus").textContent = t("req.dm.emailed");
+    $("#dmStatus").className = "status ok";
+  });
+
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const d = Object.fromEntries(new FormData(form));
@@ -139,9 +153,7 @@
     const text = summary(d);
 
     if (!SITE.formEndpoint) {
-      $("#dmText").textContent = text;
-      $("#dm").hidden = false;
-      $("#dmStatus").textContent = "";
+      showSendOptions(text, d.name);
       $("#dm").scrollIntoView({ block: "center" });
       return;
     }
@@ -162,8 +174,7 @@
     } catch (err) {
       status.textContent = t("req.err");
       status.className = "status err";
-      $("#dmText").textContent = text;
-      $("#dm").hidden = false;
+      showSendOptions(text, d.name);
     } finally {
       btn.disabled = false;
     }

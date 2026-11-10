@@ -8,6 +8,9 @@ const SITE = {
   instagramDM: "https://ig.me/m/paros.studio",
   instagramHandle: "@paros.studio",
 
+  // Requests sent with the "Send by email" button go to this address.
+  email: "woosik1204@gmail.com",
+
   // Paste a form endpoint here (e.g. https://formspree.io/f/xxxxxxx) and
   // requests will be delivered to your inbox. While this is empty, the form
   // prepares the request as a message the visitor sends to you by Instagram DM.
@@ -29,7 +32,7 @@ const PRODUCTS = [
     category: "models",
     status: "waitlist",
     art: "ribs",
-    image: "",
+    image: "images/trex.jpg",
     name: { ko: "티라노사우루스 골격 모형", en: "T-Rex Skeleton Model" },
     desc: {
       ko: "여러 파트로 출력해 조립하는 대형 공룡 골격 모형. 받침대 포함.",
@@ -140,8 +143,11 @@ const TEXT = {
     "req.sending": "보내는 중…",
     "req.ok": "요청이 접수되었습니다. 곧 연락드리겠습니다!",
     "req.err": "전송에 실패했습니다. 인스타그램 DM으로 보내주세요.",
-    "req.dm.title": "거의 다 됐어요 — DM으로 보내주세요",
-    "req.dm.lead": "아래 내용을 복사한 뒤 인스타그램 DM에 붙여넣어 보내주시면 접수됩니다.",
+    "req.dm.title": "거의 다 됐어요 — 보낼 방법을 선택하세요",
+    "req.dm.lead": "아래 내용을 이메일로 바로 보내거나, 복사해서 인스타그램 DM으로 보내주세요.",
+    "req.dm.email": "이메일로 보내기",
+    "req.dm.emailed": "메일 앱이 열렸습니다. 보내기를 눌러주세요.",
+    "req.mail.subject": "Paros Studio 요청",
     "req.dm.copy": "복사하고 DM 열기",
     "req.dm.copied": "복사됨! 인스타그램에서 붙여넣기 하세요.",
     "foot.loc": "서울, 대한민국",
@@ -205,8 +211,11 @@ const TEXT = {
     "req.sending": "Sending…",
     "req.ok": "Request received. We will be in touch soon!",
     "req.err": "Could not send. Please send it by Instagram DM instead.",
-    "req.dm.title": "Almost done — send it by DM",
-    "req.dm.lead": "Copy the request below and paste it into an Instagram DM to us.",
+    "req.dm.title": "Almost done — choose how to send it",
+    "req.dm.lead": "Send the request below straight to us by email, or copy it and paste it into an Instagram DM.",
+    "req.dm.email": "Send by email",
+    "req.dm.emailed": "Your mail app should have opened. Press send there.",
+    "req.mail.subject": "Paros Studio request",
     "req.dm.copy": "Copy and open DM",
     "req.dm.copied": "Copied! Paste it in Instagram.",
     "foot.loc": "Seoul, Korea",

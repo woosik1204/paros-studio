@@ -8,6 +8,14 @@
 <meta property="og:title" content="Paros Studio — 3D Printing">
 <meta property="og:description" content="Design · Fabrication · Objects. Engineer-run 3D print studio in Seoul.">
 <meta property="og:type" content="website">
+<script>
+  // Bright look during the visitor's daytime (7am–7pm on their device clock), dark at night.
+  (function setTheme() {
+    var h = new Date().getHours();
+    document.documentElement.dataset.theme = h >= 7 && h < 19 ? "light" : "dark";
+    setTimeout(setTheme, 5 * 60 * 1000);
+  })();
+</script>
 <link rel="icon" href="images/logo.svg" type="image/svg+xml">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="styles.css">
@@ -139,7 +147,10 @@
       <h3 data-i18n="req.dm.title"></h3>
       <p data-i18n="req.dm.lead"></p>
       <pre id="dmText"></pre>
-      <button class="btn primary" type="button" id="dmCopy" data-i18n="req.dm.copy"></button>
+      <div class="actions dm-actions">
+        <a class="btn primary" id="dmEmail" data-i18n="req.dm.email"></a>
+        <button class="btn" type="button" id="dmCopy" data-i18n="req.dm.copy"></button>
+      </div>
       <p id="dmStatus" class="status" role="status"></p>
     </div>
   </section>
