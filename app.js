@@ -57,6 +57,22 @@
     ).join("");
   }
 
+  function costTable(p) {
+    const b = p.breakdown;
+    if (!b) return "";
+    const rows = b.lines.map((l, i) =>
+      `<li><span class="cost-n">${i + 1}</span>` +
+      `<span class="cost-l">${esc(l.label[lang])}${l.note ? `<small>${esc(l.note[lang])}</small>` : ""}</span>` +
+      `<span class="cost-p">${esc(l.price[lang])}</span></li>`).join("");
+    const ex = b.example ? b.example[lang].map((x) => `<span>${esc(x)}</span>`).join("") : "";
+    return `<div class="cost">
+      <h4>${esc(t("cost.title"))}</h4>
+      <ol>${rows}</ol>
+      ${ex ? `<div class="cost-ex"><b>${esc(t("cost.example"))}</b>${ex}</div>` : ""}
+      <p class="cost-note">${esc(t("cost.note"))}</p>
+    </div>`;
+  }
+
   function renderGrid() {
     const list = PRODUCTS.filter((p) => filter === "all" || p.category === filter);
     $("#grid").innerHTML = list.map((p) => {
@@ -81,6 +97,7 @@
         <div class="card-body">
           <h3>${esc(p.name[lang])}</h3>
           <p>${esc(p.desc[lang])}</p>
+          ${costTable(p)}
           <div class="card-foot">
             <span class="price">${esc(p.price[lang])}</span>
             <button type="button" class="btn ${wait ? "primary" : ""}" data-pick="${esc(p.id)}">${esc(t(wait ? "btn.waitlist" : "btn.request"))}</button>

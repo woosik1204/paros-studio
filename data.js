@@ -41,7 +41,7 @@ const PRODUCTS = [
       ko: "여러 파트로 출력해 조립하는 대형 공룡 골격 모형. 받침대 포함.",
       en: "Large multi-part dinosaur skeleton, printed in sections and assembled on a base.",
     },
-    price: { ko: "가격 준비 중", en: "Price coming soon" },
+    price: { ko: "₩800,000", en: "₩800,000 (KRW)" },
   },
   {
     id: "display-objet",
@@ -59,7 +59,36 @@ const PRODUCTS = [
       ko: "실제 제품을 그대로 키운 대형 디스플레이 오브제. 로고와 문구까지 재현하고 브랜드 컬러에 맞춥니다. 팝업·매장 연출용.",
       en: "Your product scaled up into a large display piece, with logo and copy reproduced and colour matched to your brand. For pop-ups and retail.",
     },
-    price: { ko: "견적 문의", en: "Quote on request" },
+    price: { ko: "1개 ₩235,000~", en: "From ₩235,000" },
+    // Cost breakdown shown on the card. Edit the numbers here.
+    breakdown: {
+      lines: [
+        {
+          label: { ko: "CAD 설계 · 3D 모델링", en: "CAD design & 3D modelling" },
+          note: { ko: "디자인당 1회 · 재주문 시 재사용", en: "Once per design, reused for reorders" },
+          price: { ko: "₩150,000~", en: "₩150,000~" },
+        },
+        {
+          label: { ko: "3D 출력", en: "3D printing" },
+          note: { ko: "개당", en: "Per piece" },
+          price: { ko: "₩65,000~", en: "₩65,000~" },
+        },
+        {
+          label: { ko: "도색 · 후처리", en: "Colour & finishing" },
+          note: { ko: "개당 · 브랜드 컬러 샘플 확인 후 진행", en: "Per piece, after a colour sample is approved" },
+          price: { ko: "₩20,000~", en: "₩20,000~" },
+        },
+        {
+          label: { ko: "배송", en: "Delivery" },
+          note: { ko: "서울 직접 전달 무료", en: "Free hand-over in Seoul" },
+          price: { ko: "택배 ₩5,000~", en: "Courier ₩5,000~" },
+        },
+      ],
+      example: {
+        ko: ["새 디자인 1개: 약 ₩235,000 + 배송", "같은 디자인 추가: 개당 약 ₩85,000"],
+        en: ["1 piece, new design: ≈ ₩235,000 + delivery", "More of the same design: ≈ ₩85,000 each"],
+      },
+    },
   },
   {
     id: "color-finish",
@@ -112,6 +141,9 @@ const TEXT = {
     "filter.service": "서비스",
     "gal.prev": "이전 사진",
     "gal.next": "다음 사진",
+    "cost.title": "가격 구성",
+    "cost.example": "예시",
+    "cost.note": "크기와 디테일에 따라 달라지며, 정확한 금액은 견적으로 안내합니다.",
     "badge.waitlist": "웨이팅리스트",
     "badge.made": "주문 제작",
     "btn.waitlist": "웨이팅리스트 등록",
@@ -182,6 +214,9 @@ const TEXT = {
     "filter.service": "Services",
     "gal.prev": "Previous photo",
     "gal.next": "Next photo",
+    "cost.title": "Price breakdown",
+    "cost.example": "Example",
+    "cost.note": "Depends on size and detail. We confirm the exact amount in your quote.",
     "badge.waitlist": "Waitlist",
     "badge.made": "Made to order",
     "btn.waitlist": "Join waitlist",
