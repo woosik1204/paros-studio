@@ -31,10 +31,10 @@
     <span>Paros Studio</span>
   </a>
   <nav class="nav" aria-label="Main">
-    <a href="#shop" data-i18n="nav.shop"></a>
-    <a href="#custom" data-i18n="nav.custom"></a>
-    <a href="#process" data-i18n="nav.process"></a>
-    <a href="#request" class="nav-cta" data-i18n="nav.request"></a>
+    <a href="#shop" data-track="nav_shop" data-i18n="nav.shop"></a>
+    <a href="#custom" data-track="nav_custom" data-i18n="nav.custom"></a>
+    <a href="#process" data-track="nav_process" data-i18n="nav.process"></a>
+    <a href="#request" class="nav-cta" data-track="nav_request" data-i18n="nav.request"></a>
   </nav>
   <div class="lang" role="group" aria-label="Language">
     <button type="button" data-lang="ko">KR</button>
@@ -50,8 +50,8 @@
       <h1 data-i18n="hero.title"></h1>
       <p class="lead" data-i18n="hero.lead"></p>
       <div class="actions">
-        <a class="btn primary" href="#shop" data-i18n="hero.cta1"></a>
-        <a class="btn" href="#request" data-custom data-i18n="hero.cta2"></a>
+        <a class="btn primary" href="#shop" data-track="hero_shop" data-ab="hero-cta" data-i18n="hero.cta1"></a>
+        <a class="btn" href="#request" data-custom data-track="hero_custom" data-i18n="hero.cta2"></a>
       </div>
       <p class="note" data-i18n="hero.note"></p>
     </div>
@@ -80,7 +80,7 @@
       <div><h3 data-i18n="custom.f2.t"></h3><p data-i18n="custom.f2.d"></p></div>
       <div><h3 data-i18n="custom.f3.t"></h3><p data-i18n="custom.f3.d"></p></div>
     </div>
-    <a class="btn primary" href="#request" data-custom data-i18n="hero.cta2"></a>
+    <a class="btn primary" href="#request" data-custom data-track="custom_section_request" data-i18n="hero.cta2"></a>
   </section>
 
   <section id="process" class="section">
@@ -98,7 +98,7 @@
       <h2 data-i18n="ig.title"></h2>
       <p data-i18n="ig.lead"></p>
     </div>
-    <a class="btn" id="igLink" target="_blank" rel="noopener"><span data-i18n="ig.cta"></span> <b id="igHandle"></b></a>
+    <a class="btn" id="igLink" data-track="instagram_section" target="_blank" rel="noopener"><span data-i18n="ig.cta"></span> <b id="igHandle"></b></a>
   </section>
 
   <section id="request" class="section">
@@ -151,8 +151,8 @@
       <p data-i18n="req.dm.lead"></p>
       <pre id="dmText"></pre>
       <div class="actions dm-actions">
-        <a class="btn primary" id="dmEmail" data-i18n="req.dm.email"></a>
-        <button class="btn" type="button" id="dmCopy" data-i18n="req.dm.copy"></button>
+        <a class="btn primary" id="dmEmail" data-track="send_email" data-i18n="req.dm.email"></a>
+        <button class="btn" type="button" id="dmCopy" data-track="send_dm" data-i18n="req.dm.copy"></button>
       </div>
       <p id="dmStatus" class="status" role="status"></p>
     </div>
@@ -161,11 +161,13 @@
 
 <footer class="foot">
   <div class="brand"><img src="images/logo.svg" alt="" width="28" height="28"><span>Paros Studio</span></div>
-  <p><span data-i18n="foot.loc"></span> · <a id="igFoot" target="_blank" rel="noopener"></a></p>
+  <p><span data-i18n="foot.loc"></span> · <a id="igFoot" data-track="instagram_footer" target="_blank" rel="noopener"></a></p>
   <p class="muted">© <span id="year"></span> Paros Studio. <span data-i18n="foot.rights"></span></p>
+  <p class="muted" id="privacy" hidden data-i18n="foot.privacy"></p>
 </footer>
 
 <script src="data.js"></script>
+<script src="analytics.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

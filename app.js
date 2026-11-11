@@ -100,7 +100,7 @@
           ${costTable(p)}
           <div class="card-foot">
             <span class="price">${esc(p.price[lang])}</span>
-            <button type="button" class="btn ${wait ? "primary" : ""}" data-pick="${esc(p.id)}">${esc(t(wait ? "btn.waitlist" : "btn.request"))}</button>
+            <button type="button" class="btn ${wait ? "primary" : ""}" data-pick="${esc(p.id)}" data-track="product_request" data-product="${esc(p.id)}">${esc(t(wait ? "btn.waitlist" : "btn.request"))}</button>
           </div>
         </div>
       </article>`;
@@ -181,6 +181,8 @@
 
     status.className = "status";
     const text = summary(d);
+    // Analytics: what was requested, never who asked.
+    track("request_submitted", { type: d.type, item: d.item || "none", quantity: Number(d.quantity) || 1 });
 
     if (!SITE.formEndpoint) {
       showSendOptions(text, d.name);
@@ -227,15 +229,25 @@
 
   /* ---------- events ---------- */
   document.addEventListener("click", (e) => {
+    const tracked = e.target.closest("[data-track]");
+    if (tracked) {
+      const name = tracked.dataset.track;
+      const props = { cta: name, label: tracked.textContent.trim().slice(0, 60) };
+      if (tracked.dataset.product) props.product = tracked.dataset.product;
+      if (tracked.dataset.ab) props.ab_variant = tracked.dataset.abVariant || "control";
+      track(["product_request", "send_email", "send_dm"].includes(name) ? name : "cta_click", props);
+    }
     const langBtn = e.target.closest("[data-lang]");
     if (langBtn) {
       lang = langBtn.dataset.lang;
+      track("lang_switch", { to: lang });
+      trackContext({ lang: lang });
       try { localStorage.setItem("lang", lang); } catch (err) { /* ignore */ }
       renderAll();
       return;
     }
     const chip = e.target.closest("[data-cat]");
-    if (chip) { filter = chip.dataset.cat; renderFilters(); renderGrid(); return; }
+    if (chip) { filter = chip.dataset.cat; track("filter_click", { category: filter }); renderFilters(); renderGrid(); return; }
     const gal = e.target.closest("[data-gal]");
     if (gal) {
       const box = gal.closest(".card-media");
@@ -245,6 +257,7 @@
       galleryAt[gal.dataset.gal] = i;
       slides.forEach((s, k) => { s.hidden = k !== i; });
       $$(".gal-dots i", box).forEach((d, k) => d.classList.toggle("on", k === i));
+      track("gallery_nav", { product: gal.dataset.gal, direction: Number(gal.dataset.step) > 0 ? "next" : "prev", photo: i + 1, of: n });
       return;
     }
     const pickBtn = e.target.closest("[data-pick]");
@@ -259,4 +272,18 @@
   $("#igFoot").textContent = "Instagram " + SITE.instagramHandle;
   $("#year").textContent = new Date().getFullYear();
   renderAll();
+
+  /* ---------- analytics context + A/B tests ---------- */
+  const analytics = SITE.analytics || {};
+  $("#privacy").hidden = !analytics.posthogKey;
+  trackContext({ lang: lang, theme: document.documentElement.dataset.theme || "dark" });
+  Object.entries(analytics.experiments || {}).forEach(([flag, ex]) => {
+    abVariant(flag, (variant) => {
+      trackContext({ ["ab_" + flag]: variant });
+      $$(ex.selector).forEach((el) => {
+        el.dataset.abVariant = variant;
+        if (variant === "test" && ex.test) { el.dataset.i18n = ex.test; el.textContent = t(ex.test); }
+      });
+    });
+  });
 })();

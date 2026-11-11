@@ -15,6 +15,19 @@ const SITE = {
   // requests will be delivered to your inbox. While this is empty, the form
   // prepares the request as a message the visitor sends to you by Instagram DM.
   formEndpoint: "",
+
+  // Analytics (PostHog). Paste your project key (starts with "phc_") from
+  // PostHog > Settings > Project. Leave "" to switch analytics off.
+  // Use "https://eu.i.posthog.com" as the host if you chose the EU region.
+  analytics: {
+    posthogKey: "phc_yjHycM8NQXmCgf2bVpCdM9uKwA7jxfnp9r3kPcejiRba",
+    posthogHost: "https://us.i.posthog.com",
+    // A/B tests: create a feature flag in PostHog with this key and the
+    // variants "control" and "test". Visitors in "test" see the test text.
+    experiments: {
+      "hero-cta": { selector: '[data-ab="hero-cta"]', test: "hero.cta1.b" },
+    },
+  },
 };
 
 /* ---------------------------------------------------------------------
@@ -120,6 +133,7 @@ const TEXT = {
     "hero.title": "엔지니어가 운영하는\n3D 프린팅 스튜디오",
     "hero.lead": "서울에서 설계하고 한 층씩 쌓아 만듭니다. 완성된 작품을 구매하거나, 원하는 것을 맞춤 제작으로 의뢰하세요.",
     "hero.cta1": "작품 보기",
+    "hero.cta1.b": "가격 보기",
     "hero.cta2": "제작 의뢰하기",
     "hero.note": "온라인 결제 준비 중 — 지금은 웨이팅리스트와 주문 요청을 받고 있습니다.",
     "shop.title": "샵",
@@ -183,6 +197,7 @@ const TEXT = {
     "req.dm.copied": "복사됨! 인스타그램에서 붙여넣기 하세요.",
     "foot.loc": "서울, 대한민국",
     "foot.rights": "모든 제품은 주문 후 제작됩니다.",
+    "foot.privacy": "사이트 개선을 위해 익명 방문 통계(쿠키)를 수집합니다. 이름·연락처는 수집하지 않습니다.",
   },
   en: {
     "nav.shop": "Shop",
@@ -193,6 +208,7 @@ const TEXT = {
     "hero.title": "An engineer-run\n3D print studio",
     "hero.lead": "Designed in Seoul and built layer by layer. Buy a finished piece, or ask us to make exactly what you have in mind.",
     "hero.cta1": "Browse the shop",
+    "hero.cta1.b": "See prices",
     "hero.cta2": "Request a custom print",
     "hero.note": "Online checkout is coming — for now we are taking waitlist sign-ups and order requests.",
     "shop.title": "Shop",
@@ -256,5 +272,6 @@ const TEXT = {
     "req.dm.copied": "Copied! Paste it in Instagram.",
     "foot.loc": "Seoul, Korea",
     "foot.rights": "Every piece is made to order.",
+    "foot.privacy": "We collect anonymous visit statistics (cookies) to improve this site. Names and contact details are never collected.",
   },
 };
