@@ -1,3 +1,9 @@
+/* Soft rounded type: Nunito for Latin, NanumSquareRound (Naver) for Korean */
+@font-face { font-family: "NanumSquareRound"; font-weight: 300; font-display: swap; src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareRound/NanumSquareRoundL.woff2) format("woff2"); }
+@font-face { font-family: "NanumSquareRound"; font-weight: 400; font-display: swap; src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareRound/NanumSquareRoundR.woff2) format("woff2"); }
+@font-face { font-family: "NanumSquareRound"; font-weight: 700; font-display: swap; src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareRound/NanumSquareRoundB.woff2) format("woff2"); }
+@font-face { font-family: "NanumSquareRound"; font-weight: 800; font-display: swap; src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareRound/NanumSquareRoundEB.woff2) format("woff2"); }
+
 :root {
   --bg: #0b0c0f;
   --surface: #14161b;
@@ -16,7 +22,7 @@
   --err: #ff8a8a;
   --art: #c9ced8;
   --shadow: none;
-  --radius: 14px;
+  --radius: 22px;
   --max: 1120px;
   color-scheme: dark;
 }
@@ -48,7 +54,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Segoe UI", sans-serif;
+  font-family: "Nunito", "NanumSquareRound", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Segoe UI", sans-serif;
   font-size: 16px;
   line-height: 1.6;
   word-break: keep-all;
@@ -57,10 +63,10 @@ body {
 }
 a { color: inherit; text-decoration: none; }
 h1, h2, h3, p { margin: 0; }
-h1, h2 { text-wrap: balance; letter-spacing: -0.02em; line-height: 1.15; }
-h1 { font-size: clamp(2.2rem, 6vw, 4rem); font-weight: 750; white-space: pre-line; }
-h2 { font-size: clamp(1.6rem, 3.6vw, 2.4rem); font-weight: 700; }
-h3 { font-size: 1.05rem; font-weight: 650; }
+h1, h2 { text-wrap: balance; letter-spacing: -0.01em; line-height: 1.2; }
+h1 { font-size: clamp(2.2rem, 6vw, 4rem); font-weight: 800; white-space: pre-line; }
+h2 { font-size: clamp(1.6rem, 3.6vw, 2.4rem); font-weight: 800; }
+h3 { font-size: 1.05rem; font-weight: 700; }
 .muted { color: var(--muted); }
 
 /* ---------- header ---------- */
@@ -191,7 +197,7 @@ main { overflow: hidden; }
 .cost-l { font-weight: 550; line-height: 1.35; }
 .cost-l small { display: block; font-weight: 400; color: var(--muted); font-size: 0.78rem; margin-top: 1px; }
 .cost-p { font-weight: 600; white-space: nowrap; font-variant-numeric: tabular-nums; text-align: right; }
-.cost-ex { margin-top: 10px; padding: 9px 11px; border-radius: 10px; background: var(--accent-soft); display: grid; gap: 2px; }
+.cost-ex { margin-top: 10px; padding: 9px 11px; border-radius: 14px; background: var(--accent-soft); display: grid; gap: 2px; }
 .cost-ex b { font-size: 0.75rem; color: var(--accent); }
 .card-body .cost-note { margin-top: 8px; font-size: 0.75rem; color: var(--muted); }
 .card .btn { padding: 9px 15px; font-size: 0.88rem; }
@@ -223,7 +229,7 @@ main { overflow: hidden; }
 .field { display: flex; flex-direction: column; gap: 7px; font-size: 0.9rem; color: var(--muted); }
 .field input, .field select, .field textarea {
   font: inherit; font-size: 1rem; color: var(--text);
-  background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
   padding: 12px 14px; width: 100%;
 }
 .field textarea { resize: vertical; }
@@ -233,7 +239,7 @@ main { overflow: hidden; }
 .seg legend { font-size: 0.9rem; color: var(--muted); margin-bottom: 8px; padding: 0; }
 .seg label { cursor: pointer; }
 .seg input { position: absolute; opacity: 0; }
-.seg span { display: block; padding: 10px 16px; border: 1px solid var(--line); border-radius: 10px; font-size: 0.93rem; color: var(--muted); }
+.seg span { display: block; padding: 10px 16px; border: 1px solid var(--line); border-radius: 14px; font-size: 0.93rem; color: var(--muted); }
 .seg input:checked + span { border-color: var(--accent); color: var(--text); background: var(--accent-soft); }
 .seg input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 3px; }
 .hp { position: absolute; left: -9999px; }
@@ -248,7 +254,7 @@ main { overflow: hidden; }
 .dm .status { margin: 14px 0 0; }
 .dm pre {
   font: inherit; font-size: 0.93rem; white-space: pre-wrap; word-break: break-word;
-  background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 14px; margin: 0 0 16px;
+  background: var(--bg); border: 1px solid var(--line); border-radius: 14px; padding: 14px; margin: 0 0 16px;
 }
 
 /* ---------- footer ---------- */
