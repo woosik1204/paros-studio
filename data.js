@@ -52,12 +52,14 @@ const PRODUCTS = [
     images: [
       "images/offlow-shelf.jpg",
       ["images/offlow-product.jpg", "images/offlow-display.jpg"],
+      ["images/seed-filled.jpg", "images/seed-magnets.jpg"],
+      "images/seed-empty.jpg",
       ["images/beenuvo-contrast.jpg", "images/beenuvo-display.jpg"],
     ],
-    name: { ko: "브랜드 디스플레이 오브제", en: "Brand Display Objet" },
+    name: { ko: "브랜드 디스플레이 오브제 / 시딩 패키지", en: "Brand Display Objet / Seeding Package" },
     desc: {
-      ko: "실제 제품을 그대로 키운 대형 디스플레이 오브제. 로고와 문구까지 재현하고 브랜드 컬러에 맞춥니다. 팝업·매장 연출용.",
-      en: "Your product scaled up into a large display piece, with logo and copy reproduced and colour matched to your brand. For pop-ups and retail.",
+      ko: "실제 제품을 그대로 키운 대형 디스플레이 오브제와, 제품을 담아 보내는 자석 개폐식 시딩 패키지. 로고와 문구까지 재현하고 브랜드 컬러에 맞춥니다. 팝업·매장 연출, 인플루언서 시딩용.",
+      en: "Your product scaled up into a large display piece, or a magnetic-close seeding package that holds your products. Logo and copy reproduced, colour matched to your brand. For pop-ups, retail and influencer seeding.",
     },
     price: { ko: "1개 ₩225,000~", en: "From ₩225,000" },
     // Cost breakdown shown on the card. Edit the numbers here.
@@ -89,19 +91,6 @@ const PRODUCTS = [
         en: ["1 piece, new design (30cm tall): ≈ ₩225,000 incl. delivery", "More of the same design: ≈ ₩120,000 each"],
       },
     },
-  },
-  {
-    id: "color-finish",
-    category: "service",
-    status: "made",
-    art: "layers",
-    image: "",
-    name: { ko: "맞춤 도색 · 후처리", en: "Custom Paint & Finishing" },
-    desc: {
-      ko: "에어브러시 도색, 표면 질감(퍼지 스킨 · 스무스) 등 출력물 후가공.",
-      en: "Airbrush colour matching and surface textures (fuzzy skin, smooth) for a finished look.",
-    },
-    price: { ko: "견적 문의", en: "Quote on request" },
   },
   {
     id: "custom-print",
