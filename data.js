@@ -74,7 +74,7 @@ const PRODUCTS = [
       ko: "실제 제품을 그대로 키운 대형 디스플레이 오브제와, 제품을 담아 보내는 자석 개폐식 시딩 패키지. 로고와 문구까지 재현하고 브랜드 컬러에 맞춥니다. 팝업·매장 연출, 인플루언서 시딩용.",
       en: "Your product scaled up into a large display piece, or a magnetic-close seeding package that holds your products. Logo and copy reproduced, colour matched to your brand. For pop-ups, retail and influencer seeding.",
     },
-    price: { ko: "1개 ₩225,000~", en: "From ₩225,000" },
+    price: { ko: "1개 ₩230,000~", en: "From ₩230,000" },
     // Cost breakdown shown on the card. Edit the numbers here.
     breakdown: {
       lines: [
@@ -90,18 +90,13 @@ const PRODUCTS = [
         },
         {
           label: { ko: "도색 · 후처리", en: "Colour & finishing" },
-          note: { ko: "개당 · 브랜드 컬러 샘플 확인 후 진행", en: "Per piece, after a colour sample is approved" },
-          price: { ko: "₩50,000~", en: "₩50,000~" },
-        },
-        {
-          label: { ko: "배송", en: "Delivery" },
-          note: { ko: "택배", en: "Courier" },
-          price: { ko: "₩5,000", en: "₩5,000" },
+          note: { ko: "개당 · 색 수·마감에 따라 상이 · 브랜드 컬러 매칭 포함", en: "Per piece. Varies with colours and finish. Brand colour matching included" },
+          price: { ko: "₩60,000~", en: "₩60,000~" },
         },
       ],
       example: {
-        ko: ["새 디자인 1개 (높이 30cm): 약 ₩225,000 (배송 포함)", "같은 디자인 추가: 개당 약 ₩120,000"],
-        en: ["1 piece, new design (30cm tall): ≈ ₩225,000 incl. delivery", "More of the same design: ≈ ₩120,000 each"],
+        ko: ["새 디자인 1개 (높이 30cm): 약 ₩230,000 · 배송 포함", "같은 디자인 추가: 개당 약 ₩130,000 · 배송 포함"],
+        en: ["1 piece, new design (30cm tall): ≈ ₩230,000, delivery included", "More of the same design: ≈ ₩130,000 each, delivery included"],
       },
     },
   },
