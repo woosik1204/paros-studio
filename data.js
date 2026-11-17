@@ -44,6 +44,24 @@ const SITE = {
    --------------------------------------------------------------------- */
 const PRODUCTS = [
   {
+    id: "ionic-headphone-stand",
+    category: "objects",
+    status: "made",
+    art: "cylinder",
+    image: "",
+    images: [
+      "images/headphone-hero.jpg",
+      ["images/headphone-gold.jpg", "images/headphone-desk.jpg"],
+      "images/headphone-printing.jpg",
+    ],
+    name: { ko: "이오니아식 기둥 헤드폰 거치대", en: "Ionic Column Headphone Stand" },
+    desc: {
+      ko: "그리스 여행에서 영감을 받은 고대 이오니아식 기둥 모양의 헤드폰 거치대. 소용돌이 장식이 헤드밴드를 넓게 받쳐주고, 출력 후 조립해 완성합니다.",
+      en: "A headphone stand shaped like an ancient Ionic column, inspired by a trip to Greece. The scrolled capital gives the headband a wide, rounded rest. Printed in parts and assembled.",
+    },
+    price: { ko: "₩30,000", en: "₩30,000 (KRW)" },
+  },
+  {
     id: "trex-skeleton",
     category: "models",
     status: "made",
