@@ -7,7 +7,8 @@
   /* ---------- language ---------- */
   let lang = "ko";
   try {
-    lang = localStorage.getItem("lang") || ((navigator.language || "ko").startsWith("ko") ? "ko" : "en");
+    // Korean is the default; English only after a visitor picks it.
+    lang = localStorage.getItem("paros_lang") || "ko";
   } catch (e) { /* storage unavailable */ }
   if (!TEXT[lang]) lang = "ko";
   const t = (k) => TEXT[lang][k] ?? k;
@@ -100,7 +101,7 @@
           ${costTable(p)}
           <div class="card-foot">
             <span class="price">${esc(p.price[lang])}</span>
-            <button type="button" class="btn ${wait ? "primary" : ""}" data-pick="${esc(p.id)}" data-track="product_request" data-product="${esc(p.id)}">${esc(t(wait ? "btn.waitlist" : "btn.request"))}</button>
+            <button type="button" class="btn ${wait ? "primary" : ""}" data-pick="${esc(p.id)}" data-track="product_request" data-product="${esc(p.id)}">${esc(t(p.brief ? "btn.brief" : wait ? "btn.waitlist" : "btn.request"))}</button>
           </div>
         </div>
       </article>`;
@@ -115,7 +116,16 @@
     sel.value = keep;
   }
 
-  function renderAll() { renderText(); renderFilters(); renderGrid(); renderItems(); }
+  function renderBrief() {
+    $("#briefPdf").href = SITE.requestForm;
+    $("#briefPdf").setAttribute("download", SITE.requestFormName);
+    $("#briefEmail").href = "mailto:" + SITE.email +
+      "?subject=" + encodeURIComponent(t("brief.mail.subject")) +
+      "&body=" + encodeURIComponent(t("brief.mail.body"));
+    $("#briefDm").href = SITE.instagramDM;
+  }
+
+  function renderAll() { renderText(); renderFilters(); renderGrid(); renderItems(); renderBrief(); }
 
   /* ---------- form ---------- */
   const form = $("#form");
@@ -128,6 +138,7 @@
   function pick(id) {
     const p = PRODUCTS.find((x) => x.id === id);
     if (!p) return;
+    if (p.brief) { $("#brief").scrollIntoView(); return; }
     setType(p.category === "service" ? "custom" : "waitlist");
     $("#item").value = id;
     $("#request").scrollIntoView();
@@ -235,14 +246,14 @@
       const props = { cta: name, label: tracked.textContent.trim().slice(0, 60) };
       if (tracked.dataset.product) props.product = tracked.dataset.product;
       if (tracked.dataset.ab) props.ab_variant = tracked.dataset.abVariant || "control";
-      track(["product_request", "send_email", "send_dm"].includes(name) ? name : "cta_click", props);
+      track(["product_request", "send_email", "send_dm", "brief_download", "brief_email", "brief_dm"].includes(name) ? name : "cta_click", props);
     }
     const langBtn = e.target.closest("[data-lang]");
     if (langBtn) {
       lang = langBtn.dataset.lang;
       track("lang_switch", { to: lang });
       trackContext({ lang: lang });
-      try { localStorage.setItem("lang", lang); } catch (err) { /* ignore */ }
+      try { localStorage.setItem("paros_lang", lang); } catch (err) { /* ignore */ }
       renderAll();
       return;
     }

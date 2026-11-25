@@ -3,10 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Paros Studio — 3D Printing</title>
-<meta name="description" content="Paros Studio — engineer-run 3D print studio in Seoul. Shop finished prints or request a custom piece. 서울의 3D 프린팅 스튜디오.">
-<meta property="og:title" content="Paros Studio — 3D Printing">
-<meta property="og:description" content="Design · Fabrication · Objects. Engineer-run 3D print studio in Seoul.">
+<title>Paros Studio | 3D 프린팅 맞춤 제작 · 브랜드 디스플레이</title>
+<meta name="description" content="서울의 3D 프린팅 맞춤 제작 스튜디오. 화장품 용기 목업, 매장 디스플레이 오브제, 시딩 패키지를 설계부터 출력, 도색까지 한 곳에서 제작합니다.">
+<meta property="og:title" content="Paros Studio | 3D 프린팅 맞춤 제작">
+<meta property="og:description" content="목업, 디스플레이 오브제, 시딩 패키지. 설계부터 출력, 도색까지 서울에서 직접 제작합니다.">
+<meta property="og:locale" content="ko_KR">
 <meta property="og:type" content="website">
 <script>
   // Bright look during the visitor's daytime (7am–7pm on their device clock), dark at night.
@@ -34,10 +35,11 @@
     <a href="#shop" data-track="nav_shop" data-i18n="nav.shop"></a>
     <a href="#custom" data-track="nav_custom" data-i18n="nav.custom"></a>
     <a href="#process" data-track="nav_process" data-i18n="nav.process"></a>
-    <a href="#request" class="nav-cta" data-track="nav_request" data-i18n="nav.request"></a>
+    <a href="#faq" data-track="nav_faq" data-i18n="nav.faq"></a>
+    <a href="#brief" class="nav-cta" data-track="nav_request" data-i18n="nav.request"></a>
   </nav>
   <div class="lang" role="group" aria-label="Language">
-    <button type="button" data-lang="ko">KR</button>
+    <button type="button" data-lang="ko">한국어</button>
     <button type="button" data-lang="en">EN</button>
   </div>
 </header>
@@ -51,7 +53,7 @@
       <p class="lead" data-i18n="hero.lead"></p>
       <div class="actions">
         <a class="btn primary" href="#shop" data-track="hero_shop" data-ab="hero-cta" data-i18n="hero.cta1"></a>
-        <a class="btn" href="#request" data-custom data-track="hero_custom" data-i18n="hero.cta2"></a>
+        <a class="btn" href="#brief" data-track="hero_custom" data-i18n="hero.cta2"></a>
       </div>
       <p class="note" data-i18n="hero.note"></p>
     </div>
@@ -80,7 +82,7 @@
       <div><h3 data-i18n="custom.f2.t"></h3><p data-i18n="custom.f2.d"></p></div>
       <div><h3 data-i18n="custom.f3.t"></h3><p data-i18n="custom.f3.d"></p></div>
     </div>
-    <a class="btn primary" href="#request" data-custom data-track="custom_section_request" data-i18n="hero.cta2"></a>
+    <a class="btn primary" href="#brief" data-track="custom_section_request" data-i18n="hero.cta2"></a>
   </section>
 
   <section id="process" class="section">
@@ -91,6 +93,37 @@
       <li><span>03</span><h3 data-i18n="process.s3.t"></h3><p data-i18n="process.s3.d"></p></li>
       <li><span>04</span><h3 data-i18n="process.s4.t"></h3><p data-i18n="process.s4.d"></p></li>
     </ol>
+  </section>
+
+  <section id="brief" class="section band">
+    <div class="section-head">
+      <h2 data-i18n="brief.title"></h2>
+      <p data-i18n="brief.lead"></p>
+    </div>
+    <ol class="steps brief-steps">
+      <li><span>1</span><h3 data-i18n="brief.s1.t"></h3><p data-i18n="brief.s1.d"></p></li>
+      <li><span>2</span><h3 data-i18n="brief.s2.t"></h3><p data-i18n="brief.s2.d"></p></li>
+      <li><span>3</span><h3 data-i18n="brief.s3.t"></h3><p data-i18n="brief.s3.d"></p></li>
+    </ol>
+    <div class="actions">
+      <a class="btn primary" id="briefPdf" data-track="brief_download" data-i18n="brief.download"></a>
+      <a class="btn" id="briefEmail" data-track="brief_email" data-i18n="brief.email"></a>
+      <a class="btn" id="briefDm" data-track="brief_dm" target="_blank" rel="noopener" data-i18n="brief.dm"></a>
+    </div>
+    <p class="note"><span data-i18n="brief.note"></span> <a href="#request" data-custom data-track="brief_quick" data-i18n="brief.quick"></a></p>
+  </section>
+
+  <section id="faq" class="section">
+    <div class="section-head"><h2 data-i18n="faq.title"></h2></div>
+    <div class="faq">
+      <details><summary data-i18n="faq.q1"></summary><p data-i18n="faq.a1"></p></details>
+      <details><summary data-i18n="faq.q2"></summary><p data-i18n="faq.a2"></p></details>
+      <details><summary data-i18n="faq.q3"></summary><p data-i18n="faq.a3"></p></details>
+      <details><summary data-i18n="faq.q4"></summary><p data-i18n="faq.a4"></p></details>
+      <details><summary data-i18n="faq.q5"></summary><p data-i18n="faq.a5"></p></details>
+      <details><summary data-i18n="faq.q6"></summary><p data-i18n="faq.a6"></p></details>
+      <details><summary data-i18n="faq.q7"></summary><p data-i18n="faq.a7"></p></details>
+    </div>
   </section>
 
   <section class="section ig">
